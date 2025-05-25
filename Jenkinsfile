@@ -3,16 +3,17 @@ pipeline {
 
     stages {
         stage('Clone Repository') {
-    steps {
-        git branch: 'main', url: 'https://github.com/rani-ukamble/calculator-app.git'
-    }
-}
-
+            steps {
+                git branch: 'main', url: 'https://github.com/rani-ukamble/calculator-app.git'
+            }
+        }
 
         stage('Deploy') {
             steps {
-                // Replace with your actual deployment path
-                sh 'cp -r * /var/www/html/calculator'
+                sh '''
+                    mkdir -p /var/www/html/calculator
+                    cp -r Jenkinsfile README.md index.html /var/www/html/calculator
+                '''
             }
         }
     }
