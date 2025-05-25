@@ -23,5 +23,16 @@ pipeline {
                 '''
             }
         }
+
+        stage('Serve Locally') {
+    steps {
+        sh '''
+            cd $WORKSPACE/deploy
+            nohup python3 -m http.server 8080 &
+            echo "App is being served at http://<your-ec2-ip>:8080"
+        '''
+    }
+}
+
     }
 }
