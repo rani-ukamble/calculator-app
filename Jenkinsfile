@@ -3,10 +3,11 @@ pipeline {
 
     stages {
         stage('Clone Repository') {
-            steps {
-                git 'https://github.com/rani-ukamble/calculator-app.git'
-            }
-        }
+    steps {
+        git branch: 'main', url: 'https://github.com/rani-ukamble/calculator-app.git'
+    }
+}
+
 
         stage('Deploy') {
             steps {
